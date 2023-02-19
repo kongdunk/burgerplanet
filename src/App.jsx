@@ -32,14 +32,13 @@ function Box(props) {
   )
 }
 
-function CameraHelper() {
-  const camera = new PerspectiveCamera(60, 1, 1, 3);
-  return <group position={[0,0,2]}> <cameraHelper args={[camera]} /></group>
-}
-
 export default function App() {
+  const [hovered, hover] = useState(false) 
+  
   return (
     <Canvas  orthographic camera={{ position: [0, 0, 2], left: -2, right: 2, top: 2, bottom: -2, zoom: 100 }}>
+      <ambientLight />
+      <pointLight position={[10, 10, 10]} />
           <Model />
           <OrbitControls/>
     </Canvas>

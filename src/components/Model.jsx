@@ -16,7 +16,7 @@ export default  function Model(props) {
     <group {...props} dispose={null}>
       <group scale={0.01}>
         <mesh geometry={nodes.AMesh_numbers_0.geometry} material={materials.numbers} />
-        <mesh geometry={nodes.AA_text_0.geometry} material={materials.text} />
+        <mesh geometry={nodes.AA_text_0.geometry} material={materials.text}> <meshStandardMaterial color='orange' />  </mesh>
         <mesh geometry={nodes.AB_text_0.geometry} material={materials.text} />
         <mesh geometry={nodes.AC_text_0.geometry} material={materials.text} />
         <mesh geometry={nodes.AD_text_0.geometry} material={materials.text} />
