@@ -1,12 +1,8 @@
 import { useRef, useState } from 'react'
 import { Canvas, extend, useFrame } from '@react-three/fiber'
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
-import Text from './components/text'
-import Model from './components/Model'
 import { Suspense } from 'react'
 import { Environment } from '@react-three/drei'
-import B from './components/B'
-import U from './components/U'
 import { Characters } from './components/Characters'
 
 function Box(props) {
