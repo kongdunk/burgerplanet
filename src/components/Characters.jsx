@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.4 public/characters.gltf
 */
 
 import React, { useRef, useState } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { Float, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 
 export function Characters(props) {
@@ -15,6 +15,11 @@ export function Characters(props) {
     //useFrame((state, delta) => (mesh.current.rotation.y += delta))
     return (
     <>
+        <Float
+          rotationIntensity={1.1}
+          speed={3}
+          floatingRange={[ -0.01, 0.01 ]}
+        >
         <mesh 
           ref={mesh}
           onPointerOver={(event) => props.hover(true)}
@@ -26,6 +31,7 @@ export function Characters(props) {
           material={materials.text} >
         <meshStandardMaterial color={props.hovered ? 'hotpink' : 'orange'} />
         </mesh>
+        </Float>
         {/* 
         <mesh geometry={nodes.AA_text_0.geometry} material={materials.text} />
         <mesh geometry={nodes.AB_text_0.geometry} material={materials.text} />
