@@ -12,7 +12,10 @@ export function Characters(props) {
     const { nodes, materials } = useGLTF('/characters.gltf')
     const propy = `A${props.char}_text_0`
     const mesh = useRef()
+    
+    // ROTATION
     //useFrame((state, delta) => (mesh.current.rotation.y += delta))
+    
     return (
     <>
         <Float
@@ -25,7 +28,7 @@ export function Characters(props) {
           onPointerOver={(event) => props.hover(true)}
           onPointerOut={(event) => props.hover(false)}
           //scale={0.03} 
-          scale={props.hovered ? 0.032 : 0.03}
+          scale={0.03}
           position={props.position} 
           geometry={nodes[propy].geometry} 
           material={materials.text} >

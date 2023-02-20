@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Canvas, extend, useFrame } from '@react-three/fiber'
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera, ScrollControls } from '@react-three/drei'
 import { Characters } from './components/Characters'
 import { Globe } from './components/Globe'
 import { Burger } from './components/Burger'
@@ -33,9 +33,10 @@ export default function App() {
     <>
     <Canvas  orthographic camera={{ position: [0, 0, 4], left: -6, right: 6, top: 2, bottom: -2, zoom: 100 }}>
       <color attach="background" args={['#414a4c']} />
-
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
+      {/* SCROLL SCREEN INSIDE CANVAS */}
+      <ScrollControls pages={3} damping={0.1}>
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
           <Characters hover={hoverB} hovered={hoveredB} position={[-2.5, 1, 0]} char={'B'} />
           <Characters hover={hoverU} hovered={hoveredU} position={[-1.5, 1, 0]} char={'U'} />
           <Characters hover={hoverR} hovered={hoveredR} position={[-0.5, 1, 0]} char={'R'} />
@@ -51,20 +52,9 @@ export default function App() {
           <Characters hover={hoverRR} hovered={hoveredRR} position={[2.5, -0.5, 0]} char={'T'} />
           <Globe position={[0,-0.7,-10]}/>
           <Burger scale={0.2} position={[mousePosition.x/100 - 6.7, -mousePosition.y/100 + 3,0]}/>
-          <OrbitControls/>
+
+          </ScrollControls>
     </Canvas>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
-    <div> {mousePosition.x} </div>
     </>
   )
 }
