@@ -5,6 +5,9 @@ import Text from './components/text'
 import Model from './components/Model'
 import { Suspense } from 'react'
 import { Environment } from '@react-three/drei'
+import B from './components/B'
+import U from './components/U'
+import { Characters } from './components/Characters'
 
 function Box(props) {
   
@@ -26,20 +29,24 @@ function Box(props) {
       onPointerOver={(event) => hover(true)}
       onPointerOut={(event) => hover(false)}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+        
     </mesh>
   </>
   )
 }
 
 export default function App() {
-  const [hovered, hover] = useState(false) 
   
   return (
     <Canvas  orthographic camera={{ position: [0, 0, 2], left: -2, right: 2, top: 2, bottom: -2, zoom: 100 }}>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
-          <Model />
+          <Characters position={[-2.5, 0, 0]} char={'B'} />
+          <Characters position={[-1.5, 0, 0]} char={'U'} />
+          <Characters position={[-0.5, 0, 0]} char={'R'} />
+          <Characters position={[0.5, 0, 0]} char={'G'} />
+          <Characters position={[1.5, 0, 0]} char={'E'} />
+          <Characters position={[2.5, 0, 0]} char={'R'} />
           <OrbitControls/>
     </Canvas>
   )

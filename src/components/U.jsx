@@ -10,18 +10,13 @@ Title: Simple alphabet
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export default  function B(props) {
+export default  function U(props) {
   const { nodes, materials } = useGLTF('/scene.gltf')
   
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>
-        <mesh geometry={nodes.AB_text_0.geometry} material={materials.text} />
         <mesh geometry={nodes.AU_text_0.geometry} material={materials.text} />
-        <mesh geometry={nodes.AR_text_0.geometry} material={materials.text} />
-        <mesh geometry={nodes.AG_text_0.geometry} material={materials.text} />
-        <mesh geometry={nodes.AE_text_0.geometry} material={materials.text} />
-        <mesh geometry={nodes.AR_text_0.geometry} material={materials.text} />
         {/* ALPHABET CHARACTERS
         <mesh geometry={nodes.AA_text_0.geometry} material={materials.text} />
         <mesh geometry={nodes.AB_text_0.geometry} material={materials.text} />
