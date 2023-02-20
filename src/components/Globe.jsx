@@ -9,12 +9,15 @@ Title: Low Poly Planet Earth
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 
-export function Model(props) {
+export function Globe(props) {
   const { nodes, materials } = useGLTF('/scene.gltf')
+  const mesh = useRef()
+  useFrame((state, delta) => (mesh.current.rotation.y += delta))
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.Object_Planet_0.geometry} material={materials.Planet} position={[-0.05, 1.25, 0.07]} rotation={[Math.PI, 0, Math.PI]} />
+      <mesh ref={mesh} scale={2} geometry={nodes.Object_Planet_0.geometry} material={materials.Planet} position={[-0.05, 1.25, 0.07]} rotation={[Math.PI, 0, Math.PI]} />
     </group>
   )
 }
