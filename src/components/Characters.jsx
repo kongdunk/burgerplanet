@@ -5,14 +5,28 @@ Command: npx gltfjsx@6.1.4 public/characters.gltf
 
 import React, { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 
 export function Characters(props) {
     const [char, setChar] = useState(props.char)
     const { nodes, materials } = useGLTF('/characters.gltf')
     const propy = `A${props.char}_text_0`
+    const mesh = useRef()
+    useFrame((state, delta) => (mesh.current.rotation.y += delta))
+    useFrame((state, delta) => (mesh.current.rotation.x += delta))
     return (
     <>
-        <mesh scale={0.01} position={props.position} geometry={nodes[propy].geometry} material={materials.text} />
+        <mesh 
+          ref={mesh}
+          onPointerOver={(event) => props.hover(true)}
+          onPointerOut={(event) => props.hover(false)}
+          //scale={0.03} 
+          scale={props.hovered ? 0.04 : 0.03}
+          position={props.position} 
+          geometry={nodes[propy].geometry} 
+          material={materials.text} >
+        <meshStandardMaterial color={props.hovered ? 'hotpink' : 'orange'} />
+        </mesh>
         {/* 
         <mesh geometry={nodes.AA_text_0.geometry} material={materials.text} />
         <mesh geometry={nodes.AB_text_0.geometry} material={materials.text} />

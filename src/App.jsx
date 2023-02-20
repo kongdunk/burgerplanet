@@ -32,17 +32,29 @@ function Box(props) {
 }
 
 export default function App() {
-  
+  const [hoveredB, hoverB] = useState(false)
+  const [hoveredU, hoverU] = useState(false)
+  const [hoveredR, hoverR] = useState(false)
+  const [hoveredG, hoverG] = useState(false)
+  const [hoveredE, hoverE] = useState(false)
+  const [hoveredRR, hoverRR] = useState(false)
   return (
-    <Canvas  orthographic camera={{ position: [0, 0, 2], left: -2, right: 2, top: 2, bottom: -2, zoom: 100 }}>
+    <Canvas  orthographic camera={{ position: [0, 0, 2], left: -6, right: 6, top: 2, bottom: -2, zoom: 100 }}>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
-          <Characters position={[-2.5, 0, 0]} char={'B'} />
-          <Characters position={[-1.5, 0, 0]} char={'U'} />
-          <Characters position={[-0.5, 0, 0]} char={'R'} />
-          <Characters position={[0.5, 0, 0]} char={'G'} />
-          <Characters position={[1.5, 0, 0]} char={'E'} />
-          <Characters position={[2.5, 0, 0]} char={'R'} />
+          <Characters hover={hoverB} hovered={hoveredB} position={[-2.5, 0, 0]} char={'B'} />
+          <Characters hover={hoverU} hovered={hoveredU} position={[-1.5, 0, 0]} char={'U'} />
+          <Characters hover={hoverR} hovered={hoveredR} position={[-0.5, 0, 0]} char={'R'} />
+          <Characters hover={hoverG} hovered={hoveredG} position={[0.5, 0, 0]} char={'G'} />
+          <Characters hover={hoverE} hovered={hoveredE} position={[1.5, 0, 0]} char={'E'} />
+          <Characters hover={hoverRR} hovered={hoveredRR} position={[2.5, 0, 0]} char={'R'} />
+           
+          <Characters hover={hoverB} hovered={hoveredB} position={[-2.5, -1.2, 0]} char={'P'} />
+          <Characters hover={hoverU} hovered={hoveredU} position={[-1.5, -1.2, 0]} char={'L'} />
+          <Characters hover={hoverR} hovered={hoveredR} position={[-0.5, -1.2, 0]} char={'A'} />
+          <Characters hover={hoverG} hovered={hoveredG} position={[0.5, -1.2, 0]} char={'N'} />
+          <Characters hover={hoverE} hovered={hoveredE} position={[1.5, -1.2, 0]} char={'E'} />
+          <Characters hover={hoverRR} hovered={hoveredRR} position={[2.5, -1.2, 0]} char={'T'} />
           <OrbitControls/>
     </Canvas>
   )
