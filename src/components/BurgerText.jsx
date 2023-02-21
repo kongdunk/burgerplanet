@@ -8,7 +8,7 @@ export default function BurgerText(props) {
     const [globeY, setGlobeY] = useState(0)
       const scroll = useScroll()
     useFrame((state, delta) => {
-        setGlobeY(scroll.range(0, 1 / 2) * 10 + 1)
+        setGlobeY(scroll.range(0, 2 / 5) * 10 + 1)
     })
     return(
         <>

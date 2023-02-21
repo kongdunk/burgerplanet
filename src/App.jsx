@@ -6,14 +6,12 @@ import { Characters } from './components/Characters'
 import { Globe } from './components/Globe'
 import { Burger } from './components/Burger'
 import BurgerText from './components/BurgerText'
+import BurgerGroup from './components/BurgerGroup'
 
 export default function App() {
+  // textHoverState
   const [hoveredB, hoverB] = useState(false)
-  const [hoveredU, hoverU] = useState(false)
-  const [hoveredR, hoverR] = useState(false)
-  const [hoveredG, hoverG] = useState(false)
-  const [hoveredE, hoverE] = useState(false)
-  const [hoveredRR, hoverRR] = useState(false)
+
   const [mousePosition, setMousePosition] = useState({
     x: null,
     y: null
@@ -33,10 +31,10 @@ export default function App() {
   
   return (
     <>
-    <Canvas  orthographic camera={{ position: [0, 0, 4], left: -6, right: 6, top: 2, bottom: -2, zoom: 100 }}>
+    <Canvas id='canvas' orthographic camera={{ position: [0, 0, 4], left: -6, right: 6, top: 2, bottom: -2, zoom: 100 }}>
       <color attach="background" args={['#414a4c']} />
       {/* SCROLL SCREEN INSIDE CANVAS */}
-      <ScrollControls pages={3} damping={0.1}>
+      <ScrollControls pages={20} damping={0.1}>
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
           <mesh scale={1}>
@@ -44,6 +42,9 @@ export default function App() {
           <Globe position={[0,-0.7,-10]}/>
           </mesh>
           <Burger scale={0.2} position={[mousePosition.x/100 - 6.7, -mousePosition.y/100 + 3,0]}/>
+          
+          <BurgerGroup/>
+          
           </ScrollControls>
     </Canvas>
     </>

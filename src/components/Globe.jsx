@@ -18,7 +18,7 @@ export function Globe(props) {
   const { viewport } = useThree()
   const scroll = useScroll()
   useFrame((state, delta) => {
-    setGlobeY(scroll.range(0, 1 / 2) * 10 + 1)
+    setGlobeY(scroll.range(0, 1 / 9) * 10 + 1)
     mesh.current.rotation.y += delta
   }
   )
