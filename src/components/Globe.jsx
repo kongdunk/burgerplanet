@@ -7,17 +7,24 @@ Source: https://sketchfab.com/3d-models/low-poly-planet-earth-7b1dc4f802a54a6297
 Title: Low Poly Planet Earth
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import React, { useRef, useState } from 'react'
+import { useGLTF, useScroll } from '@react-three/drei'
+import { useFrame, useThree } from '@react-three/fiber'
 
 export function Globe(props) {
+  const [globeY, setGlobeY] = useState(0)
   const { nodes, materials } = useGLTF('/scene.gltf')
   const mesh = useRef()
-  useFrame((state, delta) => (mesh.current.rotation.y += delta))
+  const { viewport } = useThree()
+  const scroll = useScroll()
+  useFrame((state, delta) => {
+    setGlobeY(scroll.range(0, 1 / 2) * 10 + 1)
+    mesh.current.rotation.y += delta
+  }
+  )
   return (
     <group {...props} dispose={null}>
-      <mesh ref={mesh} scale={2} geometry={nodes.Object_Planet_0.geometry} material={materials.Planet} position={[-0.05, 1.25, 0.07]} rotation={[Math.PI, 0, Math.PI]} />
+      <mesh ref={mesh} scale={2} geometry={nodes.Object_Planet_0.geometry} material={materials.Planet} position={[-0.05, globeY, 0.07]} rotation={[Math.PI, 0, Math.PI]} />
     </group>
   )
 }
