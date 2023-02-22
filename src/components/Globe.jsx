@@ -20,11 +20,11 @@ export function Globe(props) {
   useFrame((state, delta) => {
     setGlobeY(scroll.range(0, 1 / 9) * 10 + 1)
     mesh.current.rotation.y += delta
-  }
-  )
+  })
   return (
     <group {...props} dispose={null}>
-      <mesh ref={mesh} scale={2} geometry={nodes.Object_Planet_0.geometry} material={materials.Planet} position={[-0.05, globeY, 0.07]} rotation={[Math.PI, 0, Math.PI]} />
+      <mesh ref={mesh} scale={2} geometry={nodes.Object_Planet_0.geometry} material={materials.Planet} position={[-0.05, globeY, 0.07]} rotation={[Math.PI, 0, Math.PI]}> 
+      </mesh>
     </group>
   )
 }

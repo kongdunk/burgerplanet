@@ -3,13 +3,13 @@ import { useFrame } from "@react-three/fiber"
 import { useState } from "react"
 import { Characters } from "./Characters"
 
-
 export default function BurgerText(props) {
     const [globeY, setGlobeY] = useState(0)
       const scroll = useScroll()
     useFrame((state, delta) => {
         setGlobeY(scroll.range(0, 2 / 5) * 10 + 1)
     })
+
     return(
         <>
         <Characters position={[-2.5, globeY, 0]} char={'B'} />

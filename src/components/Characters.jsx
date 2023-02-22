@@ -36,8 +36,8 @@ export function Characters(props) {
         >
         <mesh 
           ref={mesh}
-          onPointerOver={(event) => props.hover(true)}
-          onPointerOut={(event) => props.hover(false)}
+          //onPointerOver={(event) => props.hover(true)}
+          //onPointerOut={(event) => props.hover(false)}
           //scale={0.03} 
           scale={0.03}
           position={props.position} 

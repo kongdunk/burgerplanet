@@ -1,6 +1,6 @@
 import { useScroll } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Burger } from "./Burger"
 
 export default function BurgerGroup(props) {
@@ -12,26 +12,28 @@ export default function BurgerGroup(props) {
     const [item6, setItem6] = useState(0)
     const [groupY, setGroupY] = useState(0)
     const scroll = useScroll()
+    const mesh1 = useRef()
     useFrame((state, delta) => {
-        setItem1(scroll.range(0, 1 / 9) * 10 -10)
-        setItem2(scroll.range(0.25, 1 / 9) * 10 -10)
-        setItem3(scroll.range(0.35, 1 / 9) * 10 -10)
-        setItem4(scroll.range(0.45, 1 / 9) * 10 -10)
-        setItem5(scroll.range(0.55, 1 / 9) * 10 -10)
-        setItem6(scroll.range(0.65, 1 / 9) * 10 -10)
+        mesh1.current.rotation.y += delta
+        setItem1(scroll.range(0.05, 1 / 5) * -10 + 9)
+        setItem2(scroll.range(0.1, 1 / 3) * -10 + 9)
+        setItem3(scroll.range(0.15, 1 / 3) * -10 + 9)
+        setItem4(scroll.range(0.2, 1 / 3) * -10 + 9)
+        setItem5(scroll.range(0.25, 1 / 3) * -10 + 9)
+        setItem6(scroll.range(0.3, 1 / 3) * -10 + 9)
 
-        setGroupY(scroll.range(0.85, 1 / 9) * 10)
+        setGroupY(scroll.range(0.8, 1 / 9) * 10)
     })
     return(
         <>
-            <group position={[0,groupY,0]}>
-                <Burger bottomBun={true} position={[item1, 0, 0]}/>
-                <Burger cheese={true} position={[item2, 0, 0]} />
-                <Burger patty={true} position={[item3, 0, 0]} />
-                <Burger tomato={true}  position={[item4, 0, 0]} />
-                <Burger lettuce={true} position={[item5, 0, 0]}/>
-                <Burger topBun={true} position={[item6, 0, 0]} />
-            </group>
+            <mesh ref={mesh1} position={[0,groupY,0]}>
+                <Burger bottomBun={true} position={[0, item1, 0]}/>
+                <Burger cheese={true} position={[0, item2, 0]} />
+                <Burger patty={true} position={[0, item3, 0]} />
+                <Burger tomato={true}  position={[0, item4, 0]} />
+                <Burger lettuce={true} position={[0, item5, 0]}/>
+                <Burger topBun={true} position={[0, item6, 0]} />
+            </mesh>
           
         </>
     )

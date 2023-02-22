@@ -11,8 +11,9 @@ import { useGLTF } from '@react-three/drei'
 
 export function Burger(props) {
   const { nodes, materials } = useGLTF('/burger.gltf')
+  
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} rotation={[Math.PI, 0, Math.PI]}>
       <group position={[0, 0.83, 0]} rotation={[-1.74, 0.12, -0.03]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           { props.topBun &&
