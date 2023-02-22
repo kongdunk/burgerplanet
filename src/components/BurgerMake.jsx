@@ -10,7 +10,7 @@ import { Physics, usePlane, useBox } from '@react-three/cannon'
 import { BurgerUnfixed } from './BurgerUnfixed'
 
 function Patty(props) {  
-  const [ref] = useBox(() => ({ mass: 0.5, position: [0, 0, 0], args: [1, 0.3, 1] ,...props }))
+  const [ref] = useBox(() => ({ mass: 0.25, position: [0, 0, 0], args: [1, 0.3, 1] ,...props }))
   return (
     <mesh ref={ref}>
       <BurgerUnfixed patty={true}/>
@@ -19,7 +19,7 @@ function Patty(props) {
 }
 
 function TopBun(props) {  
-  const [ref] = useBox(() => ({ mass: 0.5, position: [0, 0, 0], args: [10, 0.5, 10] ,...props }))
+  const [ref] = useBox(() => ({ mass: 0.25, position: [0, 0, 0], args: [10, 0.65, 10] ,...props }))
   return (
     <mesh ref={ref}>
       <BurgerUnfixed topBun={true}/>
@@ -28,7 +28,7 @@ function TopBun(props) {
 }
 
 function BottomBun(props) {  
-  const [ref] = useBox(() => ({ mass: 0.5, position: [0, 0, 0], args: [10, 0.35, 10] ,...props }))
+  const [ref] = useBox(() => ({ mass: 0.25, position: [0, 0, 0], args: [10, 0.65, 10] ,...props }))
   return (
     <mesh ref={ref}>
       <BurgerUnfixed bottomBun={true}/>
@@ -37,7 +37,7 @@ function BottomBun(props) {
 }
 
 function Tomato(props) {  
-  const [ref] = useBox(() => ({ mass: 0.5, position: [0, 0, 0], args: [10, 0.1, 10] ,...props }))
+  const [ref] = useBox(() => ({ mass: 0.25, position: [0, 0, 0], args: [10, 0.13, 10] ,...props }))
   return (
     <mesh ref={ref}>
       <BurgerUnfixed tomato={true}/>
@@ -46,7 +46,7 @@ function Tomato(props) {
 }
 
 function Lettuce(props) {  
-  const [ref] = useBox(() => ({ mass: 0.5, position: [0, 0, 0], args: [10, 0.1, 10] ,...props }))
+  const [ref] = useBox(() => ({ mass: 0.25, position: [0, 0, 0], args: [10, 0.107, 10] ,...props }))
   return (
     <mesh ref={ref}>
       <BurgerUnfixed lettuce={true}/>
@@ -55,7 +55,7 @@ function Lettuce(props) {
 }
 
 function Cheese(props) {  
-  const [ref] = useBox(() => ({ mass: 0.5, position: [0, 0, 0], args: [10, 0.1, 10] ,...props }))
+  const [ref] = useBox(() => ({ mass: 0.25, position: [0, 0, 0], args: [10, 0.11, 10] ,...props }))
   return (
     <mesh ref={ref}>
       <BurgerUnfixed cheese={true}/>
@@ -78,6 +78,8 @@ export function BurgerMake(props) {
     // CALCULATING WIDTH AND HEIGHT OF THE SCREEN
     const { width, height } = useThree((state) => state.viewport)
     const scroll = useScroll( )
+    const [burgerY, setBurgerY] = useState(0)
+    const mesh = useRef()
     const { viewport } = useThree()
     const [characterScale, setCharacterScale] = useState(0)
 
@@ -90,29 +92,52 @@ export function BurgerMake(props) {
       setCharacterScale(scroll.range(0, 1 / 2) * 10 + 1)
     })
 
-    const arr = [1,2,3,4]
+  useFrame((state, delta) => {
+    setBurgerY(scroll.range(0.8, 2 / 9) * 10 - 9)
+    mesh.current.rotation.y += delta
+  })
     return (
     <>  
         <Physics>
-        <Plane position={[0,-3,0]}/>
+        <group ref={mesh} position={[-0.05, burgerY, 0.07]}>
+        <Plane position={[0,-2,0]}/>
         { 
-            props.pattyShow && <Patty/>
+            props.pattyShow[0] && <Patty position={[0,5,0]}/>
         }
         { 
-            props.cheeseShow && <Cheese/>
+            props.pattyShow[1] && <Patty position={[0,5,0]}/>
         }
         { 
-            props.topBunShow && <TopBun/>
+            props.cheeseShow[0] && <Cheese position={[0,5,0]}/>
         }
         { 
-            props.bottomBunShow && <BottomBun/>
+            props.cheeseShow[1] && <Cheese position={[0,5,0]}/>
         }
         { 
-            props.lettuceShow && <Lettuce/>
+            props.topBunShow[0] && <TopBun position={[0,5,0]}/>
         }
         { 
-            props.tomatoShow && <Tomato/>
+            props.topBunShow[1] && <TopBun position={[0,5,0]}/>
         }
+        { 
+            props.bottomBunShow[0] && <BottomBun position={[0,5,0]}/>
+        }
+        { 
+            props.bottomBunShow[1] && <BottomBun position={[0,5,0]}/>
+        }
+        { 
+            props.lettuceShow[0] && <Lettuce position={[0,5,0]}/>
+        }
+        { 
+            props.lettuceShow[1] && <Lettuce position={[0,5,0]}/>
+        }
+        { 
+            props.tomatoShow[0] && <Tomato position={[0,5,0]}/>
+        }
+        { 
+            props.tomatoShow[1] && <Tomato position={[0,5,0]}/>
+        }
+        </group>
         </Physics>
     </>
   )

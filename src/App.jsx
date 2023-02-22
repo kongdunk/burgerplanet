@@ -12,14 +12,14 @@ import { BurgerMake } from './components/BurgerMake'
 
 export default function App() {
   // textHoverState
-  const [hoveredB, hoverB] = useState(false)
+  const [hoveredB, hoverB] = useState([false, false])
 
-  const [pattyShow, setPattyShow] = useState(false)
-  const [bottomBunShow, setBottomBunShow] = useState(false)
-  const [topBunShow, setTopBunShow] = useState(false)
-  const [lettuceShow, setLettuceShow] = useState(false)
-  const [cheeseShow, setCheeseShow] = useState(false)
-  const [tomatoShow, setTomatoShow] = useState(false)
+  const [pattyShow, setPattyShow] = useState([false, false])
+  const [bottomBunShow, setBottomBunShow] = useState([false, false])
+  const [topBunShow, setTopBunShow] = useState([false, false])
+  const [lettuceShow, setLettuceShow] = useState([false, false])
+  const [cheeseShow, setCheeseShow] = useState([false, false])
+  const [tomatoShow, setTomatoShow] = useState([false, false])
 
   const [mousePosition, setMousePosition] = useState({
     x: null,
@@ -55,12 +55,12 @@ export default function App() {
           <BurgerMake pattyShow={pattyShow} bottomBunShow={bottomBunShow} topBunShow={topBunShow} cheeseShow={cheeseShow} lettuceShow={lettuceShow} tomatoShow={tomatoShow} />
           </ScrollControls>
     </Canvas>
-    <button onClick={() => setPattyShow(true)}> show smt </button>
-    <button onClick={() => setBottomBunShow(true)}> show smt </button>
-    <button onClick={() => setTopBunShow(true)}> show smt </button>
-    <button onClick={() => setCheeseShow(true)}> show smt </button>
-    <button onClick={() => setLettuceShow(true)}> show smt </button>
-    <button onClick={() => setTomatoShow(true)}> show smt </button>
+    <button onClick={() => { pattyShow[0] === true ? setPattyShow([true, true]) : setPattyShow([true, false])}}> show smt </button>
+    <button onClick={() => { topBunShow[0] === true ? setTopBunShow([true, true]) : setTopBunShow([true, false])}}> show smt </button>
+    <button onClick={() => { bottomBunShow[0] === true ? setBottomBunShow([true, true]) : setBottomBunShow([true, false])}}>  show smt </button>
+    <button onClick={() => { lettuceShow[0] === true ? setLettuceShow([true, true]) : setLettuceShow([true, false])}}>  show smt </button>
+    <button onClick={() => { cheeseShow[0] === true ? setCheeseShow([true, true]) : setCheeseShow([true, false])}}>  show smt </button>
+    <button onClick={() => { tomatoShow[0] === true ? setTomatoShow([true, true]) : setTomatoShow([true, false])}}>  show smt </button>
     <button onClick={() => {
       setPattyShow(false)
       setBottomBunShow(false)
