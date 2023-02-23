@@ -13,6 +13,7 @@
 }
 
 .buttonContainer button:nth-child(n):active {
+  color: #ffffff;
   background-color: blue;
   transition: 300ms;
   border-bottom: none;

@@ -100,7 +100,7 @@ export function BurgerMake(props) {
     <>  
         <Physics>
         <group ref={mesh} position={[-0.05, burgerY, 0.07]}>
-        <Plane position={[0,-2,0]}/>
+        <Plane position={[0,-1.1,0]}/>
         { 
             props.pattyShow[0] && <Patty position={[0,5,0]}/>
         }

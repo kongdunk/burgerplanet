@@ -8,6 +8,7 @@ Command: npx gltfjsx@6.1.4 public/burger.gltf
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import './BurgerButtons.css';
 
 export function Burger(props) {
   const { nodes, materials } = useGLTF('/burger.gltf')

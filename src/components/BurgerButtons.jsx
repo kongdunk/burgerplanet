@@ -13,7 +13,7 @@ export default function BurgerButtons(props){
 
 
     return(
-    <Html style={{top: '1600vh'}} fullscreen>
+    <Html style={{top: '1000vh'}} fullscreen>
     <div className="buttonContainer">
       <button 
         onClick={() => { props.pattyShow[0] === true ? props.setPattyShow([true, true]) : props.setPattyShow([true, false])}}

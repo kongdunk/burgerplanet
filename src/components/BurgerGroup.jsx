@@ -15,14 +15,14 @@ export default function BurgerGroup(props) {
     const mesh1 = useRef()
     useFrame((state, delta) => {
         mesh1.current.rotation.y += delta
-        setItem1(scroll.range(0.05, 1 / 5) * -10 + 9)
-        setItem2(scroll.range(0.1, 1 / 3) * -10 + 9)
-        setItem3(scroll.range(0.15, 1 / 3) * -10 + 9)
-        setItem4(scroll.range(0.2, 1 / 3) * -10 + 9)
-        setItem5(scroll.range(0.25, 1 / 3) * -10 + 9)
-        setItem6(scroll.range(0.3, 1 / 3) * -10 + 9)
+        setItem1(scroll.range(0.02, 1 / 4) * -10 + 9)
+        setItem2(scroll.range(0.07, 1 / 4) * -10 + 9)
+        setItem3(scroll.range(0.12, 1 / 4) * -10 + 9)
+        setItem4(scroll.range(0.17, 1 / 4) * -10 + 9)
+        setItem5(scroll.range(0.22, 1 / 4) * -10 + 9)
+        setItem6(scroll.range(0.27, 1 / 4) * -10 + 9)
 
-        setGroupY(scroll.range(0.8, 1 / 9) * 10)
+        setGroupY(scroll.range(0.6, 1 / 2) * 10)
     })
     return(
         <>
