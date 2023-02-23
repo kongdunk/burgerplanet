@@ -10,6 +10,8 @@ import BurgerGroup from './components/BurgerGroup'
 import { BurgerMake } from './components/BurgerMake'
 import BurgerButtons from './components/BurgerButtons'
 import './App.css';
+import { Ufo } from './components/Ufo'
+
 export default function App() {
   // textHoverState
   const [hoveredB, hoverB] = useState([false, false])
@@ -50,7 +52,9 @@ export default function App() {
           <BurgerText hover={hoverB} hovered={hoveredB}/>
           <Globe position={[0,-0.7,-10]}/>
           </mesh>
-          <Burger scale={0.2} position={[mousePosition.x/100 - 6.7, -mousePosition.y/100 + 3,0]}/>
+          {/* model following cursor
+          <Ufo scale={0.15} position={[mousePosition.x/100 - 6.7, -mousePosition.y/100 + 3,0]}/>
+          */}
           <BurgerGroup/>
           <BurgerMake pattyShow={pattyShow} bottomBunShow={bottomBunShow} topBunShow={topBunShow} cheeseShow={cheeseShow} lettuceShow={lettuceShow} tomatoShow={tomatoShow} />
           <Html style={{top: '750vh'}} fullscreen>
