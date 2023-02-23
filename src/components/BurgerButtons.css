@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+.buttonContainer button {
+  border: none;
+  border-bottom: 0.33rem solid #28282b;
+  border-radius: 0.7rem;
+  padding: 0.7rem;
+  margin: 1rem;
+  width: 7rem;
+  height: 3rem;
+  font-family: "Lilita One", cursive;
+  background-color: #f4ce53;
+  transition: 300ms;
+}
+
+.buttonContainer button:nth-child(n):active {
+  background-color: blue;
+  transition: 300ms;
+  border-bottom: none;
+}
+.buttonContainer button:nth-child(n) {
+  color: #28282b;
+}
+.buttonContainer button:nth-child(1) {
+  background-color: #f45353;
+}
+.buttonContainer button:nth-child(2) {
+  background-color: #f4d853;
+}
+.buttonContainer button:nth-child(3) {
+  background-color: #f4c153;
+}
+.buttonContainer button:nth-child(4) {
+  background-color: #53f46e;
+}
+.buttonContainer button:nth-child(5) {
+  background-color: #f4ce53;
+}
+.buttonContainer button:nth-child(6) {
+  background-color: #f4536a;
+}
+.buttonContainer button:nth-child(7) {
+  background-color: #ffffff;
+}
+.buttonContainer {
+  flex-wrap: wrap;
+  padding-right: 5rem;
+  padding-left: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 6rem;
+  height: 100vh;
+  width: 100vw;
+}
