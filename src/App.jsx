@@ -42,6 +42,10 @@ export default function App() {
   
   return (
     <>
+    <head> 
+      <title> Burger Planet </title>
+      
+    </head>
     <Canvas id='canvas' orthographic camera={{ position: [0, 0, 4], left: -6, right: 6, top: 2, bottom: -2, zoom: 100 }}>
       <color attach="background" args={['#414a4c']} />
       {/* SCROLL SCREEN INSIDE CANVAS */}
